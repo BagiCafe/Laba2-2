@@ -55,7 +55,7 @@ class Task:
         self.status = "completed"
 
     def __repr__(self) -> str:
-        return f"Task(id={self.id}, priority={self.priority}, status={self.status})"
+        return f"Task(id={self.id}, description='{self.description}, priority={self.priority}, status={self.status}, payload={self.payload})"
 
 
 @runtime_checkable

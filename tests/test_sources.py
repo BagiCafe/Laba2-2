@@ -103,9 +103,9 @@ class TestTaskSourceFile:
     def temp_json_file(self):
         """Создаёт временный JSON-файл с тестовыми данными."""
         data = [
-            {"id": 1, "user_id": 101},
-            {"id": 2, "user_id": 102},
-            {"id": 3, "user_id": 103}
+            {"id": 1, "description": "Задача из файла 1", "priority": 5, "status": "created", "user_id": 101},
+            {"id": 2, "description": "Задача из файла 2", "priority": 3, "status": "in_progress", "user_id": 102},
+            {"id": 3, "description": "Задача из файла 3", "priority": 1, "status": "completed", "user_id": 103}
         ]
 
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
@@ -183,8 +183,8 @@ class TestIntegration:
         generator = TaskSourceGenerator()
         api = TaskSourceAPI()
         file_source = TaskSourceFile(self.create_temp_json_file([
-            {"id": 1, "user_id": 101},
-            {"id": 2, "user_id": 102}
+            {"id": 1, "description": "Тест 1", "priority": 3, "status": "created", "user_id": 101},
+            {"id": 2, "description": "Тест 2", "priority": 5, "status": "in_progress", "user_id": 102}
         ]))
         assert count_tasks(generator) == 10
         assert count_tasks(api) == 4
