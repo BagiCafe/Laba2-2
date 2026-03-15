@@ -1,6 +1,9 @@
 from dataclasses import dataclass
 from typing import Protocol, runtime_checkable
-from src.exceptions import TaskValidationError
+from datetime import datetime
+from src.exceptions import TaskStateError
+from src.descriptors import IntegerValidator, StringValidator, StatusValidator
+
 
 class Task:
     id = IntegerValidator("_id", min_value=1)
@@ -45,6 +48,11 @@ class Task:
         if self.status == "completed":
             raise TaskStateError("Нельзя отменить завершённую задачу")
         self.status = "failed"
+
+    def complete(self) -> None:
+        if self.status != "in_progress":
+            raise TaskStateError(f"Нельзя завершить задачу со статусом '{self.status}'.")
+        self.status = "completed"
 
     def __repr__(self) -> str:
         return f"Task(id={self.id}, priority={self.priority}, status={self.status})"

@@ -14,4 +14,4 @@ class TaskSourceGenerator:
 
     def get_tasks(self) -> list[Task]:
         """Генерирует список случайных задач"""
-        return [Task(id = random.randint(1,101), payload = {"user_id": random.randint(100,1001), "count": random.randint(1000,10001)}) for i in range(10)]
+        return [Task(id = random.randint(1,101), description=f"Сгенерированная задача", priority=random.randint(1, 10), status=random.choice(["created", "in_progress", "completed", "failed"]), payload = {"user_id": random.randint(100,1001), "count": random.randint(1000,10001)}) for i in range(10)]

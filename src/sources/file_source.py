@@ -18,7 +18,7 @@ class TaskSourceFile:
         try:
             with open(self.file_name, "r") as f:
                 data = json.load(f)
-                tasks = [Task(id = i["id"], payload={"user_id": i["user_id"]}) for i in data]
+                tasks = [Task(id = i["id"], description = "Задача из файла", priority = i["priority"], status = i["status"], payload={"user_id": i["user_id"]}) for i in data]
             return tasks
         except Exception as e:
             logger.error(f"Ошибка при чтении файла: {e}")

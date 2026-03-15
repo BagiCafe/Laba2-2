@@ -15,8 +15,8 @@ class TaskSourceAPI:
     def get_tasks(self) -> list[Task]:
         """Получает задачи из имитированного API"""
         return [
-            Task(id=10, payload={"user_id": random.randint(100, 1001), "count": random.randint(1000,10001)}),
-            Task(id=11, payload={"user_id": random.randint(100, 1001), "count": random.randint(1000,10001)}),
-            Task(id=12, payload={"user_id": random.randint(100, 1001), "count": random.randint(1000,10001)}),
-            Task(id=13, payload={"user_id": random.randint(100, 1001), "count": random.randint(1000,10001)})
+            Task(id=10, description="Задача из API", priority=random.randint(1, 10), payload={"user_id": random.randint(100, 1001), "count": random.randint(1000,10001)}),
+            Task(id=11, description="Задача из API", priority=random.randint(1, 10), payload={"user_id": random.randint(100, 1001), "count": random.randint(1000,10001)}),
+            Task(id=12, description="Задача из API", priority=random.randint(1, 10), payload={"user_id": random.randint(100, 1001), "count": random.randint(1000,10001)}),
+            Task(id=13, description="Задача из API", priority=random.randint(1, 10), payload={"user_id": random.randint(100, 1001), "count": random.randint(1000,10001)})
         ]
