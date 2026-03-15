@@ -159,40 +159,32 @@ class TestTaskMethods:
 
 
 class TestTaskValidation:
-    """Тесты валидации через дескрипторы."""
 
     def test_invalid_id_negative(self):
-        """Тест отрицательного ID."""
         with pytest.raises((TypeError, ValueError)):
             Task(id=-5, description="Задача")
 
     def test_invalid_id_zero(self):
-        """Тест нулевого ID."""
         with pytest.raises((TypeError, ValueError)):
             Task(id=0, description="Задача")
 
     def test_invalid_id_type(self):
-        """Тест ID не целого типа."""
         with pytest.raises((TypeError, ValueError)):
             Task(id="1", description="Задача")
 
     def test_invalid_priority_low(self):
-        """Тест приоритета меньше 1."""
         with pytest.raises((TypeError, ValueError)):
             Task(id=1, description="Задача", priority=0)
 
     def test_invalid_priority_high(self):
-        """Тест приоритета больше 10."""
         with pytest.raises((TypeError, ValueError)):
             Task(id=1, description="Задача", priority=11)
 
     def test_invalid_priority_type(self):
-        """Тест приоритета не целого типа."""
         with pytest.raises((TypeError, ValueError)):
             Task(id=1, description="Задача", priority="высокий")
 
     def test_invalid_status(self):
-        """Тест невалидного статуса."""
         with pytest.raises((TypeError, ValueError)):
             Task(id=1, description="Задача", status="unknown")
 
