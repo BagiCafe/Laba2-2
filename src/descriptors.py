@@ -1,4 +1,5 @@
 class IntegerValidator:
+    """Data-дескриптор для целочисленных полей с валидацией"""
     def __init__(self, name: str, min_value: int = 1, max_value: int = None):
         self.name = name
         self.min_value = min_value
@@ -20,6 +21,7 @@ class IntegerValidator:
 
 
 class StringValidator:
+    """Data-дескриптор для строковых полей с валидацией"""
     def __init__(self, name: str):
         self.name = name
 
@@ -36,6 +38,7 @@ class StringValidator:
         instance.__dict__[self.name] = value
 
 class StatusValidator:
+    """Data-дескриптор для статуса задачи с фиксированным набором значений"""
     STATUSES_VALID = {"created", "in_progress", "completed", "failed"}
 
     def __init__(self, name: str):
