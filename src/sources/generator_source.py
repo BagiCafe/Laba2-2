@@ -8,7 +8,7 @@ class TaskSourceGenerator:
     """Генератор случайных задач"""
     def __init__(self):
         """Инициализирует генератор задач"""
-        logger.debug(f"Инициализирован {self.__class__.__name__}")
+        logger.info(f"Инициализирован {self.__class__.__name__}")
 
     def get_tasks(self) -> list[Task]:
         """Генерирует список случайных задач"""

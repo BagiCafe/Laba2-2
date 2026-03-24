@@ -8,7 +8,7 @@ class TaskSourceAPI:
     """Имитация источника задач из внешнего API"""
     def __init__(self):
         """Инициализирует API-источник"""
-        logger.debug(f"Инициализирован {self.__class__.__name__}")
+        logger.info(f"Инициализирован {self.__class__.__name__}")
 
     def get_tasks(self) -> list[Task]:
         """Получает задачи из имитированного API"""

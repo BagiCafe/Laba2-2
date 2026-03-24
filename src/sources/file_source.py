@@ -9,7 +9,7 @@ class TaskSourceFile:
     def __init__(self, file_name: str):
         """Инициализирует файловый источник"""
         self.file_name = file_name
-        logger.debug(f"Инициализирован {self.__class__.__name__} с файлом {file_name}")
+        logger.info(f"Инициализирован {self.__class__.__name__} с файлом {file_name}")
 
     def get_tasks(self) -> list[Task]:
         """Читает задачи из JSON-файла. Открывает файл, загружает JSON и преобразует в список задач"""
