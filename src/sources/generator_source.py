@@ -7,10 +7,8 @@ logger = logging.getLogger(__name__)
 class TaskSourceGenerator:
     """Генератор случайных задач"""
     def __init__(self):
-        """Инициализирует генератор задач, проверяя соответствие протоколу TaskSource при создании"""
-        if not isinstance(self, TaskSource):
-            logger.error(f"{self.__class__.__name__} не соответствует протоколу TaskSource")
-            raise TypeError(f"{self.__class__.__name__} не соответствует протоколу TaskSource")
+        """Инициализирует генератор задач"""
+        logger.debug(f"Инициализирован {self.__class__.__name__}")
 
     def get_tasks(self) -> list[Task]:
         """Генерирует список случайных задач"""
