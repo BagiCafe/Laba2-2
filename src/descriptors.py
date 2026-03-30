@@ -1,3 +1,6 @@
+from src.exceptions import TaskValidationError
+
+
 class IntegerValidator:
     """Data-дескриптор для целочисленных полей с валидацией"""
     def __init__(self, name: str, min_value: int = 1, max_value: int = None):
@@ -12,11 +15,11 @@ class IntegerValidator:
 
     def __set__(self, instance, value):
         if not isinstance(value, int):
-            raise TypeError (f"{self.name} должен быть целым числом")
+            raise TaskValidationError(f"{self.name} должен быть целым числом")
         if value < self.min_value:
-            raise ValueError(f"Значение не может быть меньше {self.min_value}")
+            raise TaskValidationError(f"Значение не может быть меньше {self.min_value}")
         if self.max_value is not None and value > self.max_value:
-            raise ValueError(f"Значение не может быть больше {self.max_value}")
+            raise TaskValidationError(f"Значение не может быть больше {self.max_value}")
         instance.__dict__[self.name] = value
 
 
@@ -32,9 +35,9 @@ class StringValidator:
 
     def __set__(self, instance, value):
         if not isinstance(value, str):
-            raise TypeError (f"{self.name} должен быть строкой")
+            raise TaskValidationError(f"{self.name} должен быть строкой")
         if not value.strip():
-            raise ValueError(f"{self.name} не может быть пустой")
+            raise TaskValidationError(f"{self.name} не может быть пустой")
         instance.__dict__[self.name] = value
 
 class StatusValidator:
@@ -51,5 +54,5 @@ class StatusValidator:
 
     def __set__(self, instance, value):
         if value not in self.STATUSES_VALID:
-            raise ValueError(f"Статус должен быть одним из: {self.STATUSES_VALID}")
+            raise TaskValidationError(f"Статус должен быть одним из: {self.STATUSES_VALID}")
         instance.__dict__[self.name] = value

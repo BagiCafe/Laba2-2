@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime
 from src.models.task import Task, TaskSource
-from src.exceptions import TaskStateError
+from src.exceptions import TaskStateError, TaskValidationError
 
 
 class TestTask:
@@ -161,31 +161,31 @@ class TestTaskMethods:
 class TestTaskValidation:
 
     def test_invalid_id_negative(self):
-        with pytest.raises((TypeError, ValueError)):
+        with pytest.raises(TaskValidationError):
             Task(id=-5, description="Задача")
 
     def test_invalid_id_zero(self):
-        with pytest.raises((TypeError, ValueError)):
+        with pytest.raises(TaskValidationError):
             Task(id=0, description="Задача")
 
     def test_invalid_id_type(self):
-        with pytest.raises((TypeError, ValueError)):
+        with pytest.raises(TaskValidationError):
             Task(id="1", description="Задача")
 
     def test_invalid_priority_low(self):
-        with pytest.raises((TypeError, ValueError)):
+        with pytest.raises(TaskValidationError):
             Task(id=1, description="Задача", priority=0)
 
     def test_invalid_priority_high(self):
-        with pytest.raises((TypeError, ValueError)):
+        with pytest.raises(TaskValidationError):
             Task(id=1, description="Задача", priority=11)
 
     def test_invalid_priority_type(self):
-        with pytest.raises((TypeError, ValueError)):
+        with pytest.raises(TaskValidationError):
             Task(id=1, description="Задача", priority="высокий")
 
     def test_invalid_status(self):
-        with pytest.raises((TypeError, ValueError)):
+        with pytest.raises(TaskValidationError):
             Task(id=1, description="Задача", status="unknown")
 
 
